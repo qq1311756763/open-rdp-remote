@@ -9,6 +9,9 @@ import java.io.IOException;
 /**
  * socket 工具类
  * socket class tools
+ *
+ * @author :zdy
+ * @data :2018/11
  * */
 public class SocketTools implements MessageProcessor<Integer> {
 
