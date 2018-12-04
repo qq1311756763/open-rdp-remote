@@ -34,9 +34,11 @@ public class Port2PortServiceImpl implements Port2PortService  {
     @Async("asyncServiceExecutor")
     public void sendTarget(){
         try {
+            Socket targetSocket = PublicVariable.targetSocket;
+            Socket clientSocket = PublicVariable.clientSocket;
              //根据输入输出流和服务端连接//获取一个输出流，向服务端发送信息
-             OutputStream outputStream=PublicVariable.targetSocket.getOutputStream();
-             InputStream inputStream = PublicVariable.clientSocket.getInputStream();
+             OutputStream outputStream=targetSocket.getOutputStream();
+             InputStream inputStream = clientSocket.getInputStream();
 
              while (true){
                  byte[] temp = new byte[10240];
@@ -61,9 +63,12 @@ public class Port2PortServiceImpl implements Port2PortService  {
     public void listenTarget(){
         try {
 
+            Socket targetSocket = PublicVariable.targetSocket;
+            Socket clientSocket = PublicVariable.clientSocket;
+
             //根据输入输出流和服务端连接//获取一个输出流，向服务端发送信息
-            OutputStream outputStream=PublicVariable.clientSocket.getOutputStream();
-            InputStream inputStream = PublicVariable.targetSocket.getInputStream();
+            OutputStream outputStream=clientSocket.getOutputStream();
+            InputStream inputStream = targetSocket.getInputStream();
 
             while (true){
                 byte[] temp = new byte[10240];
