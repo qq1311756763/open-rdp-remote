@@ -1,12 +1,14 @@
 package pers.zdy.openrdpremoteserver.task;
 
 import cn.hutool.log.LogFactory;
-import org.smartboot.socket.transport.AioQuickServer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.Ordered;
-import pers.zdy.openrdpremoteserver.code.IntegerProtocol;
-import pers.zdy.openrdpremoteserver.share.SocketTools;
+import pers.zdy.openrdpremoteserver.service.Port2PortService;
+import pers.zdy.openrdpremoteserver.share.PublicVariable;
+
+import java.net.ServerSocket;
 
 public class RemoteServer implements ApplicationRunner, Ordered {
 
@@ -19,7 +21,8 @@ public class RemoteServer implements ApplicationRunner, Ordered {
         return 0;
     }
 
-
+    @Autowired
+    Port2PortService port2PortService;
 
 
     /**
@@ -29,7 +32,17 @@ public class RemoteServer implements ApplicationRunner, Ordered {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         LogFactory.get().info("task runner");
-        AioQuickServer<Integer> server = new AioQuickServer<Integer>(8888, new IntegerProtocol(), new SocketTools());
-        server.start();
+
+        ServerSocket serverSocket=new ServerSocket(8888);
+        while (true) {
+            PublicVariable.clientSocket = serverSocket.accept();
+            port2PortService.test();
+            port2PortService.listenTarget();
+            port2PortService.sendTarget();
+        }
+        //port2PortService.server();
     }
+
+
+
 }
