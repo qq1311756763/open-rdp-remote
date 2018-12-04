@@ -4,5 +4,5 @@ import java.net.Socket;
 
 public class PublicVariable {
     public static Socket targetSocket = null;
-    public static Socket clientSocket;
+    public static Socket clientSocket = null;
 }

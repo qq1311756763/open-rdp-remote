@@ -39,13 +39,19 @@ public class Port2PortServiceImpl implements Port2PortService  {
              InputStream inputStream = PublicVariable.clientSocket.getInputStream();
 
              while (true){
-                 byte[] temp = new byte[1024];
-                 inputStream.read(temp);
-                 outputStream.write(temp);
+                 byte[] temp = new byte[10240];
+                 int ret = inputStream.read(temp);
+                 outputStream.write(temp,0,ret);
                  outputStream.flush();
              }
          } catch (Exception e) {
             LogFactory.get().error(e,"sendTarget error");
+/*            try {
+                PublicVariable.clientSocket.close();
+                PublicVariable.targetSocket.close();
+            }catch (Exception ex){
+
+            }*/
          }
 
     }
@@ -60,13 +66,20 @@ public class Port2PortServiceImpl implements Port2PortService  {
             InputStream inputStream = PublicVariable.targetSocket.getInputStream();
 
             while (true){
-                byte[] temp = new byte[1024];
-                inputStream.read(temp);
-                outputStream.write(temp);
+                byte[] temp = new byte[10240];
+                int ret =inputStream.read(temp);
+                outputStream.write(temp,0,ret);
                 outputStream.flush();
             }
         } catch (Exception e) {
             LogFactory.get().error(e,"listenTarget error");
+/*            try {
+                PublicVariable.clientSocket.close();
+                PublicVariable.targetSocket.close();
+            }catch (Exception ex){
+
+            }*/
+
         }
 
     }

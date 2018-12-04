@@ -9,6 +9,7 @@ import pers.zdy.openrdpremoteserver.service.Port2PortService;
 import pers.zdy.openrdpremoteserver.share.PublicVariable;
 
 import java.net.ServerSocket;
+import java.net.Socket;
 
 public class RemoteServer implements ApplicationRunner, Ordered {
 
@@ -36,7 +37,7 @@ public class RemoteServer implements ApplicationRunner, Ordered {
         ServerSocket serverSocket=new ServerSocket(8888);
         while (true) {
             PublicVariable.clientSocket = serverSocket.accept();
-            port2PortService.test();
+            PublicVariable.targetSocket=new Socket("172.30.200.50",3389);
             port2PortService.listenTarget();
             port2PortService.sendTarget();
         }
