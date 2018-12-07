@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>pers.zdy</groupId>
-	<artifactId>open-rdp-remote-server</artifactId>
+	<artifactId>open-rdp-remote-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>open-rdp-remote-server</name>
+	<name>open-rdp-remote-client</name>
 	<description>Open source intranet remote desktop based on RDP</description>
 
 	<parent>
@@ -51,29 +51,6 @@
 			<artifactId>hutool-log</artifactId>
 			<version>${hutool.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-			<optional>true</optional>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.ibeetl/beetlsql -->
-		<dependency>
-			<groupId>com.ibeetl</groupId>
-			<artifactId>beetl-framework-starter</artifactId>
-			<version>1.1.70.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.oracle</groupId>
-			<artifactId>ojdbc</artifactId>
-			<version>6</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/ojdbc6.jar</systemPath>
-		</dependency>
-
-
-
 
 
 	</dependencies>
