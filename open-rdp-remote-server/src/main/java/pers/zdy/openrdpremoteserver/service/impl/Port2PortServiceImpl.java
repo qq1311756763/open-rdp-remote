@@ -1,6 +1,7 @@
 package pers.zdy.openrdpremoteserver.service.impl;
 
 import cn.hutool.log.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import pers.zdy.openrdpremoteserver.service.Port2PortService;
@@ -10,8 +11,14 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * 端口转发的实现
+ * @author :zdy
+ * @data:2018/12/10
+ * */
 @Service
 public class Port2PortServiceImpl implements Port2PortService  {
+
 
     @Override
     public void test(){
@@ -22,7 +29,6 @@ public class Port2PortServiceImpl implements Port2PortService  {
             LogFactory.get().error(ex);
         }
     }
-
 
     @Override
     @Async("asyncServiceExecutor")
@@ -104,6 +110,8 @@ public class Port2PortServiceImpl implements Port2PortService  {
             LogFactory.get().error(ex);
         }
     }
+
+
 
 
 }

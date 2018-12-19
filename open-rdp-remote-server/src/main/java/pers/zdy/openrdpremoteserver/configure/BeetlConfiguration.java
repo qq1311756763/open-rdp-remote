@@ -7,6 +7,12 @@ import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
 
+
+/**
+ * beetlsql配置类
+ * @author :zdy
+ * @date :2018/12/10
+ * */
 @Configuration
 public class BeetlConfiguration {
 

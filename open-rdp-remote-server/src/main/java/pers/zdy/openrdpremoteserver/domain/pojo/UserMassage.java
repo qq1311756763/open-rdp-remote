@@ -7,6 +7,15 @@ public class UserMassage {
     String ip;
     String port;
     String userName;
+    String state;
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 
     public String getUserName() {
         return userName;
